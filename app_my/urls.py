@@ -1,10 +1,15 @@
 from django.urls import path
-from . import views
-
-app_name = 'quotes'
+from .views import (
+    CategoryView, TagView, QuoteView, RandomQuoteView, 
+    QuoteDetailView, UserView, UserDetailView
+)
 
 urlpatterns = [
-    path('categories/', views.CategoryView.as_view(), name='category_list'),
-    path('tags/', views.TagView.as_view(), name='tag_list'),
-    path('quotes/', views.QuoteView.as_view(), name='quote_list'),
+    path('quotes/', QuoteView.as_view()),
+    path('quotes/random/', RandomQuoteView.as_view()), 
+    path('quotes/<int:pk>/', QuoteDetailView.as_view()),
+    path('categories/', CategoryView.as_view()),
+    path('tags/', TagView.as_view()),
+    path('users/', UserView.as_view()),
+    path('users/<int:pk>/', UserDetailView.as_view()),
 ]

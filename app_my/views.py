@@ -40,6 +40,10 @@ class CategoryView(View):
                 status=400
             )
 
+        #def delete(self, request, pk):
+        #obj = get_object_or_404(pk=pk)
+        #obj.delete()
+
 
 @method_decorator(csrf_exempt, 'dispatch')
 class TagView(View):
@@ -69,6 +73,12 @@ class TagView(View):
                 {'status': 'error', 'code': 400},
                 status=400
             )
+
+        
+
+    #def delete(self, request, pk):
+            #obj = get_object_or_404(pk=pk)
+            #obj.delete()
 
 
 @method_decorator(csrf_exempt, 'dispatch')
@@ -102,6 +112,10 @@ class QuoteView(View):
                 status=400
             )
 
+    #def delete(self, request, pk):
+            #obj = get_object_or_404(pk=pk)
+            #obj.delete()
+
 
 @method_decorator(csrf_exempt, 'dispatch')
 class RandomQuoteView(View):
@@ -118,6 +132,10 @@ class RandomQuoteView(View):
             'created_at': quote.created_at.isoformat(),
         }
         return JsonResponse({'data': quote_data})
+
+    #def delete(self, request, pk):
+            #obj = get_object_or_404(pk=pk)
+            #obj.delete()
 
 
 @method_decorator(csrf_exempt, 'dispatch')
@@ -136,6 +154,16 @@ class QuoteDetailView(View):
             'created_at': quote.created_at.isoformat(),
         }
         return JsonResponse({'data': quote_data})
+
+    def put(self, request, pk):
+        original = get_object_or_404(Quote, id=pk)
+        try: 
+            dict_from_request = 
+
+
+    #def delete(self, request, pk):
+            #obj = get_object_or_404(pk=pk)
+            #obj.delete()
 
 
 @method_decorator(csrf_exempt, 'dispatch')
@@ -167,6 +195,10 @@ class UserView(View):
                 status=400
             )
 
+    #def delete(self, request, pk):
+           #obj = get_object_or_404(pk=pk)
+            #obj.delete()
+
 
 @method_decorator(csrf_exempt, 'dispatch')
 class UserDetailView(View):
@@ -178,3 +210,7 @@ class UserDetailView(View):
             'email': user.email,
         }
         return JsonResponse({'data': user_data})
+
+    #def delete(self, request, pk):
+            #obj = get_object_or_404(pk=pk)
+            #obj.delete()
